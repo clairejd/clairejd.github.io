@@ -6,13 +6,40 @@ body {
 
 a,
 a:focus {
-  color: #62725A;
+  color: #923926;
   text-decoration: none;
 }
 
 a:hover {
-  color: #322E18;
+  color: #d5745e;
   text-decoration: none;
+}
+
+dl {
+  margin-top: 3rem;
+}
+
+dl p {
+  margin-bottom: 1rem;
+}
+
+dd {
+  margin-bottom: 2rem;
+}
+
+dt {
+  font-family: 'Roboto Mono', monospace;
+}
+
+
+h1 {
+  margin-top: 10rem;
+}
+
+h2 {
+  margin-top: 5rem;
+  color: #7b769b;
+  font-size: 1.6rem;
 }
 
 .centerpiece {
@@ -33,4 +60,9 @@ a:hover {
   
     display: flex;
     align-items: center;
+}
+
+.img-me {
+  width: auto;
+  border-radius: 50%;
 }
