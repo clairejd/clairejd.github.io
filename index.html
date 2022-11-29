@@ -5,29 +5,89 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>claire jade</title>
+        <title>claire jade durant</title>
 
         <!-- Styles -->
         <link href="./static/bootstrap.min.css" rel="stylesheet">
         <link href="./static/style.css" rel="stylesheet">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">  
+        <script src="https://kit.fontawesome.com/aba5c0cc91.js" crossorigin="anonymous"></script>
     </head>
 
     <body> 
-        <div class="container vertical-center">
-            <div class="row">
-                <div class="col-md-4">
-                    <img src="./static/me.jpg" alt="Photo of Claire" class="img-me img-fluid">
+        <div class="container align-items-center">
+            <div class="jumbotron my-5">
+                    <div class="row mt-5">
+                        <div class="col-md-4">
+                            <img src="./static/me.jpg" alt="Photo of Claire" class="rounded-circle img-thumbnail img-fluid">
+                        </div>
+                        <div class="col-md-8 my-auto">
+                            <h1 class="cover-heading">claire jade durant</h1>
+                            <ul class="my-3 no-bullets">
+                                <li><i class="fa-solid fa-fw fa-location-pin"></i> Albany, NY</li>
+                                <li><i class="fa-solid fa-fw fa-heart"></i> middleware development</li>
+                                <li><i class="fa-solid fa-fw fa-ban"></i> frontend development</li>
+                                <li><i class="fa-solid fa-fw fa-briefcase"></i> z/TPF development @ IBM</li>
+                                <li><i class="fa-solid fa-fw fa-graduation-cap"></i> BSc in Computer & Information Sciences @ SUNY Potsdam</li>
+                                <li><i class="fa-solid fa-fw fa-paper-plane"></i><a href="https://docs.google.com/document/d/1x7U6wD2YzLY6_b1MREdhTeoy8mFMbA3vfLmK9dKCX7Y"> resume</a></li>
+                                <li><i class="fa-brands fa-fw fa-linkedin"></i><a href="https://www.linkedin.com/in/claire-durant/"> linkedin</a></li>   
+                            </ul>
+                        </div>
                 </div>
-                <div class="col">
-                    <h1 class="cover-heading">claire jade</h1>
-                    <p>
-                        my name is claire jade durant. i'm a software engineer based in albany, ny. right now i work on the z/TPF mainframe operating system at IBM.
-                    </p>
-                    <p>
-                        most of my experience is in developing operating system utilities, including system-wide cache support and data access middleware using standardized interfaces. check out my <a href="./portfolio.html">portfolio</a> for more details.
+            </div>
+            <div class="col-md-12 mb-5">
+                <p>
+                    hey! my name is Claire Durant. I'm a software engineer with a focus on backend systems & middleware. most of my experience is in developing operating system utilities, including system-wide cache support and data access middleware using standardized interfaces.
+                </p>
+                <p>
+                    since 2018, I've been working with IBM in the <a href="https://www.ibm.com/products/z-transaction-processing-facility">z/TPF development lab</a>. 
+                    z/TPF is an operating system for IBM Z mainframes built with a focus on high-volume transaction processing for business-critical operations. 
+                    since z/TPF is so critical to our clients' business, I build everything with a keen eye toward security and performance.
+                </p>
+                
+                <hr class="my-5">
+
+                <h2>publications & patents</h2>
+                <div class="row">
+                    <div class="col-md-3 col-sm-12"><a href="https://patents.google.com/patent/US20210294822A1/en">'Centralized database system with geographically partitioned data'</a></div>
+                    <div class="col-md-9 col-sm-12">
+                        <p>
+                            I'm a co-inventor on a patent which proposes a system for storing data in one or more remote data stores. this system has a minimal impact on user applications from both API and performance perspectives. by performing all updates to remote systems via an asynchronous process, this system does not force applications to wait for network operations to complete before continuing to run after updating a piece of data.
+                        </p>
+                    </div>
+                </div>
+
+                <h2>talks</h2>
+                <div class="row">
+                    <div class="col-md-3 col-sm-12"><a href="https://mediacenter.ibm.com/media/z+TPF+InternshipA+z+TPF+Support+for+MongoDB/1_40iit3uc">z/TPF Internship: z/TPF Support for MongoDB</a></div>
+                    <div class="col-md-9 col-sm-12">
+                        <p>
+                            this talk is an overview of z/TPF support for MongoDB, which provides the capability for remote systems to read and update legacy databases on a z/TPF system
+                            by using a MongoDB client.
+                        </p>
+                    </div>
+                </div>
+                <h2>blogs</h2>
+                <div class="row">
+                    <div class="col-md-3 col-sm-12">
+                        <p class="my-0"><a href="https://community.ibm.com/community/user/ibmz-and-linuxone/blogs/claire-durant1/2020/10/16/ztpfdf-education-series-database-organization"> z/TPFDF Education Series: Database Organization</a></p>
+                        <p class="my-0"><a href="https://community.ibm.com/community/user/ibmz-and-linuxone/blogs/claire-durant1/2020/11/17/ztpfdf-education-series-basic-application-usage"> z/TPFDF Education Series: Basic Application Usage</a></p>
+                    </div>
+                    <div class="col-md-9 col-sm-12">
+                        <p>
+                            in my early career, I've spent a lot of time acclimating to the z/TPF mainframe operating system. it's become clear to me that learning legacy systems can be daunting to new developers. I've written a few blog posts on the z/TPFDF database management system to ease the burden of learning how to use the z/TPF operating system.
+                        </p>
+                    </div>
+                </div>   
+            </div>
+        </div>
+        <div class="container align-items-center">
+            <div class="row justify-content-center">
+                <div class="col my-3">
+                    <p class="text-center">
+                        last updated 11/29/2022
                     </p>
                 </div>
             </div>
