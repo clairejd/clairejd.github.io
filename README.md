@@ -1,1 +1,1 @@
-# clairedurant.dev
+# claireja.de

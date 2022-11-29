@@ -1,13 +1,28 @@
+:root {
+  --main-bg-color: #323436ff;
+  --main-text-color: #d6c9f6ff;
+  --accent-color-1: #a76571ff;
+  --accent-color-2: #a5c2a5ff;
+  --accent-color-3: #400406ff;
+}
+
 body {
-    color: #442235ff;
-    background-color: #e9bcb7ff;
-    font-family: 'Inconsolatas', monospace;
+  color: var(--main-text-color);
+  background-color: var(--main-bg-color);
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
 a,
 a:focus {
-  color: #923926;
+  color: var(--accent-color-1);
   text-decoration: none;
+  font-weight: bold;
+}
+
+ul {
+  list-style-type: none;
+  padding: 10;
+  margin: 0;
 }
 
 a:hover {
@@ -30,7 +45,6 @@ dd {
 dt {
   font-family: 'Roboto Mono', monospace;
 }
-
 
 h1 {
   margin-top: 10rem;
