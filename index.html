@@ -42,7 +42,7 @@
                     hi! i'm claire!
                 </p>
                 <p>
-                    i'm a software engineer in new york's hudson valley. today, i work at IBM, where i develop and maintain the z/TPF operating system that powers critical transactions across the world.
+                    i'm a software engineer in new york's hudson valley. today, i work at IBM, where i develop middleware for the z/TPF operating system, including database access interfaces, connection pooling infrastructure, and asynchronous message streaming frameworks.
                 </p>
                 
                 <hr class="my-5">
@@ -61,6 +61,14 @@
                     <div class="col-md-9 col-sm-12">
                         <p>
                             this patent is about a database where data is stored on a remote system, without the application knowing or caring where the data physically lives. the applications using this database can't take the latency hit from network comms, so we can't send data to another system synchronously. instead, we kick off a process that updates the remote database for us.
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 col-sm-12"><a href="https://priorart.ip.com/IPCOM/00276727D">method for avoiding repeated fatal errors during message streaming processing that uses transaction scopes</a></div>
+                    <div class="col-md-9 col-sm-12">
+                        <p>
+                            this is a paper i co-wrote, discussing a message streaming infrastructure wherein processing is protected by transaction scopes. this paper details how you can use system error intercepts to avoid repeated processing of messages and blocked queues.
                         </p>
                     </div>
                 </div>
