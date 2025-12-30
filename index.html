@@ -1,111 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>claire jade durant</title>
-
-        <!-- Styles -->
-        <link href="./static/bootstrap.min.css" rel="stylesheet">
-        <link href="./static/style.css" rel="stylesheet">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">  
-        <script src="https://kit.fontawesome.com/aba5c0cc91.js" crossorigin="anonymous"></script>
-    </head>
-
-    <body> 
-        <div class="container align-items-center">
-            <div class="jumbotron my-5">
-                    <div class="row mt-5">
-                        <div class="col-md-4">
-                            <img src="./static/me.jpg" alt="photo of claire!" class="rounded-circle img-thumbnail img-fluid">
-                        </div>
-                        <div class="col-md-8 my-auto">
-                            <h1 class="cover-heading">claire jade durant</h1>
-                            <ul class="my-3 no-bullets">
-                                <li><i class="fa-solid fa-fw fa-comment"></i> she/they</li>
-                                <li><i class="fa-solid fa-fw fa-location-pin"></i> poughkeepsie, ny</li>
-                                <li><i class="fa-solid fa-fw fa-briefcase"></i> advisory software engineer, IBM</li>
-                                <li><i class="fa-solid fa-fw fa-heart"></i> operating systems development</li>
-                                <li><i class="fa-solid fa-fw fa-graduation-cap"></i> suny potsdam</li>
-                                <li><i class="fa-solid fa-fw fa-paper-plane"></i><a href="https://docs.google.com/document/d/1x7U6wD2YzLY6_b1MREdhTeoy8mFMbA3vfLmK9dKCX7Y"> resume</a></li>
-                                <li><i class="fa-brands fa-fw fa-linkedin"></i><a href="https://www.linkedin.com/in/claire-durant/"> linkedin</a></li>   
-                            </ul>
-                        </div>
-                </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claire Durant</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/aba5c0cc91.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- hey reminder!! if you use "z/TPF", make sure you put it in a nowrap span: <span class="nowrap">z/TPF</span> -->
+    <div class="container">
+        <nav>
+            <a href="#projects">projects</a>
+            <a href="#publications">publications</a>
+            <a href="#talks">talks</a>
+            <a href="#blogs">blogs</a>
+            <a href="#music-art">music</a>
+            <a href="#contact">contact</a>
+        </nav>
+        
+        <header>
+            <div class="profile-pic">
+                <img src="me.jpg" alt="A photo of Claire Durant">
             </div>
-            <div class="col-md-12 mb-5">
-                <p>
-                    hi! i'm claire!
-                </p>
-                <p>
-                    i'm a software engineer in new york's hudson valley. today, i work at IBM, where i develop middleware for the z/TPF operating system, including database access interfaces, connection pooling infrastructure, and asynchronous message streaming frameworks.
-                </p>
+            <div class="header-text">
+                <h1>Claire Durant</h1>
+                <p>hey! i'm a software engineer in based in new york's hudson valley region. i also make music sometimes!</p>
+            </div>
+        </header>
+        
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="item">
+                <h3>z/TPF dynamically resizable logical record cache support</h3>
+                <p>worked on infrastructure improvements to <span class="nowrap">z/TPF's</span> logical record cache system. added support for dynamically resizing caches without losing existing data—previously you had to delete and recreate the entire cache, which meant repopulating everything from scratch. also implemented a time-initiated sweeper program that monitors caches for expired entries. separately, reduced MIPS consumption and processing time when adding entries to full caches by optimizing the castout process—particularly important for time-sensitive operations. these changes made it much more practical to use very large caches in time-sensitive applications.</p>
+                <a href="https://www.ibm.com/docs/en/ztpf/latest?topic=pu2-dynamically-resizable-logical-record-cache-support-apars-pj46253-ph30577">IBM Docs page</a>
+            </div>
+            <div class="item">
+                <h3>z/TPF business events support for multiple unordered dispatch queues</h3>
+                <p>helped extend <span class="nowrap">z/TPF's</span> business events support to handle multiple unordered dispatch queues. previously, business events shared a single system default queue, which meant that if one event encountered transmission errors or timeouts, it could delay processing of completely unrelated events. implemented support for separating events across multiple queues based on destination, volume, or other criteria—so issues on one queue don't impact others. specifically adapted the traditional <span class="nowrap">z/TPF</span> database data event processing path to work with multiple queues. also added support for increasing the maximum number of dispatch queues beyond the default limit of 20, providing more flexibility in business event environment configuration.</p>
+                <a href="https://www.ibm.com/docs/en/ztpf/1.1.2025?topic=pu2-business-events-support-multiple-unordered-dispatch-queues-apar-pj46905">IBM Docs page</a>
+            </div>
+        </section>
+        
+        <section id="publications">
+            <h2>Publications</h2>
+            <div class="item">
+                <h3>method for avoiding repeated fatal errors during message streaming processing that uses transaction scopes</h3>
+                <p>the title's wordy, i know. this is about resiliency in exactly-once message streaming systems! a message streaming system uses transaction scopes to ensure the atomicity of working with the message queue. if a fatal error occurs after popping a message from the queue, the transaction scope caises the message to reappear on the queue. this ensures that the message is not lost before it can be sent to a remote system - it can be retried. but if something causes repeated errors with a specific message, then that fatal error is going to keep happening over and over again. as a result of the repeated error, the message might be retransmitted multiple times, and processing of the queue will block as this message is stuck on the queue. the paper talks about how you can use fatal error intercept functions to move those messages to an error queue as part of process exit, preventing the message streaming system from getting stuck on that message.</p>
+                <p>The IP.com Journal - 2025</p>
+                <a href="https://priorart.ip.com/IPCOM/00276727D">View Publication</a>
+                <p style="font-size: 13px; font-style: italic; color: #9d8a9d; margin-top: 10px;">p.s. this costs $40 to read at the link, but i know a gal who might be able to kick up a spare copy over email :)</p>
+            </div>
+            <div class="item">
+                <h3>securing your <span class="nowrap">z/TPF</span> environment</h3>
+                <p>contributed to the IBM redpaper "securing your <span class="nowrap">z/TPF</span> environment," documenting security features and best practices for the <span class="nowrap">z/TPF</span> operating system. wrote sections on managing and controlling access to <span class="nowrap">z/TPFDF</span> databases through <span class="nowrap">z/TPF</span> support for MongoDB, including user authentication, role-based access control, and filtered collections that limit data visibility based on business need. also documented file system security support, covering the posix-y permissions, users and groups as they're supported on <span class="nowrap">z/TPF</span>, as well as access controls that restrict operator commands and administrative functions. the redpaper gives A LOT of guidance on protecting mission-critical systems running on <span class="nowrap">z/TPF</span>, aligned with the NIST cybersecurity framework.</p>
+                <p>IBM Redbooks - 2024</p>
+                <a href="https://www.redbooks.ibm.com/abstracts/redp5740.html">view publication</a>
+            </div>
+            <div class="item">
+                <h3>centralized database system with geographically partitioned data</h3>
+                <p>centralized database system that enables compliance with data localization laws without requiring application redesign. many countries require that data about their citizens be physically stored within their borders, which traditionally meant partitioning databases geographically — complex and risky. this patent describes a method wherein the database manager transparently handles geographic storage requirements: when a document is created, the system determines the required storage location based on attributes like citizenship or address, creates a remote copy in that geographic location, and modifies the local copy to contain only location metadata. applications can continue reading and writing documents as if they're stored locally, while the database manager automatically routes requests to the correct geographic storage. with this approach, there's no need to redesign applications around geographic partitioning.</p>
+                <p>US Patent 11,636,139 - 2023</p>
+                <a href="https://patents.google.com/patent/US11636139B2/">view patent</a>
+            </div>
+        </section>
+        
+        <section id="talks">
+            <h2>Talks</h2>
+            <div class="item">
+                <h3><span class="nowrap">z/TPF</span> support for MongoDB update</h3>
+                <p>TPF Users Group - 2025</p>
+                <a href="https://public.dhe.ibm.com/software/htp/tpf/tpfug/tgs25/TPFUG_2025_DBDF_zTPF_Support_For_MongoDB_Update.pdf">slides</a>
+            </div>
+
+            <div class="item">
+                <h3><span class="nowrap">z/TPFDF</span> update</h3>
+                <p>TPF Users Group - 2024</p>
+                <a href="https://public.dhe.ibm.com/software/htp/tpf/tpfug/tgs24/TPFUG_2024_DBDF_TPFDF_Update.pdf">slides</a>
+            </div>
+            
+            <div class="item">
+                <h3>dynamically resizable logical record cache</h3>
+                <p>TPF Users Group - 2023</p>
+                <a href="https://public.dhe.ibm.com/software/htp/tpf/tpfug/tgs23/TPFUG_2023_APPL_DynamicallyResizableLogicalRecordCache.pdf">slides</a>
+            </div>
+
+            <div class="item">
+                <h3><span class="nowrap">z/TPF</span> support for MongoDB education session</h3>
+                <p>z/TPF internship - 2020</p>
+                <a href="https://mediacenter.ibm.com/media/z+TPF+Internship%3A+z+TPF+Support+for+MongoDB/1_40iit3uc/192490123">watch</a>
+            </div>
+        </section>
+        
+        <section id="blogs">
+            <h2>Blogs</h2>
+            <div class="item">
+                <h3>ZFILE sudo command support & health center for <span class="nowrap">z/TPF</span> support for java late attachment</h3>
+                <p>this is about how you can use <span class="nowrap">z/TPF's</span> ZFILE sudo command to start the IBM health center on JVMs that are already up in a JAM cluster.</p>
+                <a href="https://community.ibm.com/community/user/blogs/claire-durant2/2023/10/13/zfile-sudo-health-center-java-late-attachment">View Post</a>
+            </div>
+            <div class="item">
+                <h3>z/TPFDF education series</h3>
+                <p>these posts are a high-level intro to <span class="nowrap">z/TPFDF</span>, a database management system for the <span class="nowrap">z/TPF</span> OS.</p>
+                <a href="https://community.ibm.com/community/user/blogs/claire-durant1/2020/10/16/ztpfdf-education-series-database-organization">part 1: database organization</a> / <a href="https://community.ibm.com/community/user/blogs/claire-durant1/2020/11/17/ztpfdf-education-series-basic-application-usage">part 2: basic application usage</a>
+            </div>
+        </section>
+
+        <section id="music-art">
+            <h2>Music</h2>
+            <div class="item">
+                <h3>soundcloud miscellany</h3>
+                <p>little unfinished tracks - to call these WIPs would be very generous. they really just represent the moment at which i hit "save" and went off to do something else. these are mostly experiments with music programming using ORCA and other tools.</p>
+                <a href="https://soundcloud.com/clairejd">listen</a>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Contact</h2>
+            <p style="margin-bottom: 30px; padding-left: 20px;">feel free to reach out for collaborations, questions, or just to chat about shared interests.</p>
+            <div style="display: grid; grid-template-columns: auto 1fr; gap: 15px 20px; align-items: baseline; padding-left: 20px;">
+                <span style="color: #b8a0b8;">email:</span>
+                <a href="mailto:claire.jade.durant@gmail.com">claire.jade.durant@gmail.com</a>
                 
-                <hr class="my-5">
-
-                <h2>publications & patents</h2>
-                <div class="row">
-                    <div class="col-md-3 col-sm-12"><a href="https://www.redbooks.ibm.com/abstracts/redp5740.html">securing your z/TPF environment</a></div>
-                    <div class="col-md-9 col-sm-12">
-                        <p>
-                            this IBM redbooks publication is a primer on z/TPF's security capabilities, from the very guts of its process model, to its cryptographic agility capabilities for the future. 
-                        </p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3 col-sm-12"><a href="https://patents.google.com/patent/US20210294822A1/en">centralized database system with geographically partitioned data</a></div>
-                    <div class="col-md-9 col-sm-12">
-                        <p>
-                            this patent is about a database where data is stored on a remote system, without the application knowing or caring where the data physically lives. the applications using this database can't take the latency hit from network comms, so we can't send data to another system synchronously. instead, we kick off a process that updates the remote database for us.
-                        </p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3 col-sm-12"><a href="https://priorart.ip.com/IPCOM/00276727D">method for avoiding repeated fatal errors during message streaming processing that uses transaction scopes</a></div>
-                    <div class="col-md-9 col-sm-12">
-                        <p>
-                            this is a paper i co-wrote, discussing a message streaming infrastructure wherein processing is protected by transaction scopes. this paper details how you can use system error intercepts to avoid repeated processing of messages and blocked queues.
-                        </p>
-                    </div>
-                </div>
-
-                <h2>talks</h2>
-                <div class="row">
-                    <div class="col-md-3 col-sm-12"><a href="https://mediacenter.ibm.com/media/z+TPF+InternshipA+z+TPF+Support+for+MongoDB/1_40iit3uc">z/TPF internship: z/TPF support for MongoDB</a></div>
-                    <div class="col-md-9 col-sm-12">
-                        <p>
-                            i talked about how to use z/TPF support for MongoDB, which is z/TPF's answer to legacy database access through an industry-standard interface from distributed systems. 
-                        </p>
-                    </div>
-                </div>
-                <h2>blogs</h2>
-                <div class="row">
-                    <div class="col-md-3 col-sm-12">
-                        <p class="my-0"><a href="https://community.ibm.com/community/user/ibmz-and-linuxone/blogs/claire-durant1/2020/10/16/ztpfdf-education-series-database-organization"> z/TPFDF education series: database organization</a></p>
-                        <p class="my-0"><a href="https://community.ibm.com/community/user/ibmz-and-linuxone/blogs/claire-durant1/2020/11/17/ztpfdf-education-series-basic-application-usage"> z/TPFDF education series: Basic application usage</a></p>
-                    </div>
-                    <div class="col-md-9 col-sm-12">
-                        <p>
-                            i wrote about z/TPFDF, the database management system for z/TPF. the concepts might seem a little foreign to someone that's only seen sql and modern nosql databases - here's how to get a grasp on how to define and use z/TPFDF databases. 
-                        </p>
-                    </div>
-                </div>   
+                <span style="color: #b8a0b8;">github:</span>
+                <a href="https://github.com/clairejd">clairejd</a>
+                
+                <span style="color: #b8a0b8;">linkedin:</span>
+                <a href="https://www.linkedin.com/in/claire-durant/">claire-durant</a>
             </div>
-        </div>
-        <div class="container align-items-center">
-            <div class="row justify-content-center">
-                <div class="col my-3">
-                    <p class="text-center">
-                        last updated 09/18/2024 | <i class="fa-solid fa-transgender"></i> trans rights!
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <script src="./static/bootstrap.bundle.min.js"></script>
-    </body>
+        </section>
+        
+        <footer>
+            <p>© 2025 claire durant | <i class="fa-solid fa-transgender"></i> trans rights!</p>
+        </footer>
+    </div>
+</body>
 </html>
