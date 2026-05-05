@@ -32,6 +32,11 @@
         <section id="projects">
             <h2>Projects</h2>
             <div class="item">
+                <h3>HTTP/2 support for the z/TPF enhanced HTTP client</h3>
+                <p>worked on an implementation of the <span class="nowrap">HTTP/2</span> protocol in <span class="nowrap">z/TPF's</span> enhanced HTTP client, which provides the ability for transactional applications to make <span class="nowrap">HTTP/REST</span> calls using <span class="nowrap">z/TPF's</span> connection pooling support called the high-speed connector. the cool thing about <span class="nowrap">HTTP/2</span> is that it's multiplexed, so a single connection can carry multiple outstanding requests. this means that compared to <span class="nowrap">HTTP/1.1</span>, users can dramatically reduce the number of sockets for a given endpoint, which is a big deal for lighter-weight remote distributed hosts. i implemented an adaptive connection selection algorithm optimized for mixed-size traffic with concurrent requests, which considers real-time data from the HTTP and TCP layers, as well as from TCP internals that aren't usually exposed. also, a bunch of work on error handling and connection cleanup, which gets pretty complex with multiple pending requests.</p>
+                <a href="https://www.ibm.com/docs/en/ztpf/latest?topic=pu2-http2-protocol-support-enhanced-http-client-apar-pj48066">IBM Docs page</a>
+            </div>
+            <div class="item">
                 <h3>z/TPF dynamically resizable logical record cache support</h3>
                 <p>worked on infrastructure improvements to <span class="nowrap">z/TPF's</span> logical record cache system. added support for dynamically resizing caches without losing existing data—previously you had to delete and recreate the entire cache, which meant repopulating everything from scratch. also implemented a time-initiated sweeper program that monitors caches for expired entries. separately, reduced MIPS consumption and processing time when adding entries to full caches by optimizing the castout process—particularly important for time-sensitive operations. these changes made it much more practical to use very large caches in time-sensitive applications.</p>
                 <a href="https://www.ibm.com/docs/en/ztpf/latest?topic=pu2-dynamically-resizable-logical-record-cache-support-apars-pj46253-ph30577">IBM Docs page</a>
@@ -46,11 +51,18 @@
         <section id="publications">
             <h2>Publications</h2>
             <div class="item">
+                <h3>method for using machine learning techniquest to intelligently select a connection from a pool</h3>
+                <p>wrote this about working in an environment <i>not dissimilar</i> to <span class="nowrap">z/TPF's</span> high-speed connector with <span class="nowrap">HTTP/2</span>. this paper goes a step further than what we actually implemented, saying that not only can we use real-time connection health data to intelligently choose an optimal connection for a given request - we can use machine learning to continually improve the selection engine. this goes into a theoretical implementation of a few models with a feedback loop and re-training to get better results.</p>
+                <p>The IP.com Journal - 2026</p>
+                <a href="https://priorart.ip.com/IPCOM/00277854D">View Publication</a>
+                <p style="font-size: 13px; font-style: italic; color: #9d8a9d; margin-top: 10px;">p.s. this costs $40 to read at the link, but i know a gal who might be able to kick up a spare copy over email :)</p>
+            </div>
+            <div class="item">
                 <h3>method for avoiding repeated fatal errors during message streaming processing that uses transaction scopes</h3>
                 <p>the title's wordy, i know. this is about resiliency in exactly-once message streaming systems! a message streaming system uses transaction scopes to ensure the atomicity of working with the message queue. if a fatal error occurs after popping a message from the queue, the transaction scope caises the message to reappear on the queue. this ensures that the message is not lost before it can be sent to a remote system - it can be retried. but if something causes repeated errors with a specific message, then that fatal error is going to keep happening over and over again. as a result of the repeated error, the message might be retransmitted multiple times, and processing of the queue will block as this message is stuck on the queue. the paper talks about how you can use fatal error intercept functions to move those messages to an error queue as part of process exit, preventing the message streaming system from getting stuck on that message.</p>
                 <p>The IP.com Journal - 2025</p>
                 <a href="https://priorart.ip.com/IPCOM/00276727D">View Publication</a>
-                <p style="font-size: 13px; font-style: italic; color: #9d8a9d; margin-top: 10px;">p.s. this costs $40 to read at the link, but i know a gal who might be able to kick up a spare copy over email :)</p>
+                <p style="font-size: 13px; font-style: italic; color: #9d8a9d; margin-top: 10px;">p.s. this is also paywalled but get in touch if you want to chat</p>
             </div>
             <div class="item">
                 <h3>securing your <span class="nowrap">z/TPF</span> environment</h3>
@@ -68,6 +80,12 @@
         
         <section id="talks">
             <h2>Talks</h2>
+            <div class="item">
+                <h3><span class="nowrap">HTTP/2</span> support for <span class="nowrap">z/TPF's</span> enhanced HTTP client</h3>
+                <p>TPF Users Group - 2026</p>
+                <a href="https://public.dhe.ibm.com/software/htp/tpf/tpfug/tgs26/TPFUG_2026_COMM_HTTP2_Client.pdf">slides</a>
+            </div>
+
             <div class="item">
                 <h3><span class="nowrap">z/TPF</span> support for MongoDB update</h3>
                 <p>TPF Users Group - 2025</p>
@@ -95,6 +113,11 @@
         
         <section id="blogs">
             <h2>Blogs</h2>
+            <div class="item">
+                <h3>z/TPF HTTP/2 client blogs</h3>
+                <p>a series of posts about HTTP/2 support for <span class="nowrap">z/TPF's</span> enhanced HTTP client.</p>
+                <a href="https://community.ibm.com/community/user/blogs/claire-durant2/2026/03/20/ztpf-http2-client-more-traffic-fewer-connections">announcement</a> / <a href="https://community.ibm.com/community/user/blogs/claire-durant2/2026/04/03/configuring-ztpf-endpoint-group-http2-client">configuratione</a>
+            </div>
             <div class="item">
                 <h3>ZFILE sudo command support & health center for <span class="nowrap">z/TPF</span> support for java late attachment</h3>
                 <p>this is about how you can use <span class="nowrap">z/TPF's</span> ZFILE sudo command to start the IBM health center on JVMs that are already up in a JAM cluster.</p>
